@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../services/network/constant/api_response.dart';
+import '../../../../core/network/constant/api_response.dart';
 import 'user_model.dart';
 
 part 'user_state.freezed.dart';

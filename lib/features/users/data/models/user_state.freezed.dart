@@ -16,9 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$UserState {
-  UserModel get user =>
-      throw _privateConstructorUsedError; // @Default(true) bool isLoading,
-// @Default(ApiResponse.idle()) ApiResponse isLoading,
+  UserModel get user => throw _privateConstructorUsedError;
   RESPONSE_STATUS get status => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -122,8 +120,6 @@ class _$_UserState implements _UserState {
   @override
   @JsonKey()
   final UserModel user;
-// @Default(true) bool isLoading,
-// @Default(ApiResponse.idle()) ApiResponse isLoading,
   @override
   @JsonKey()
   final RESPONSE_STATUS status;
@@ -158,8 +154,7 @@ abstract class _UserState implements UserState {
 
   @override
   UserModel get user;
-  @override // @Default(true) bool isLoading,
-// @Default(ApiResponse.idle()) ApiResponse isLoading,
+  @override
   RESPONSE_STATUS get status;
   @override
   @JsonKey(ignore: true)

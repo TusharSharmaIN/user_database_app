@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:realm/realm.dart';
 
-import '../network/dio_client.dart';
-import '../shared_preferences/preference.dart';
-import '../shared_preferences/preference_client.dart';
+import 'network/dio_client.dart';
+import 'shared_preferences/preference.dart';
+import 'shared_preferences/preference_client.dart';
 
 /// list of shared providers
 

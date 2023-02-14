@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../services/core_provider/core_providers.dart';
+import '../../../core/shared_providers.dart';
 import '../data/api/user_api.dart';
 import '../data/models/user_state.dart';
 import '../data/repository/user_repository.dart';

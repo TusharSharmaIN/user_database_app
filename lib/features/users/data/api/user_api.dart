@@ -1,5 +1,5 @@
-import '../../../../services/network/constant/endpoints.dart';
-import '../../../../services/network/dio_client.dart';
+import '../../../../core/network/constant/endpoints.dart';
+import '../../../../core/network/dio_client.dart';
 
 /// api class to communicate with users api using dio
 /// must be called from a repository

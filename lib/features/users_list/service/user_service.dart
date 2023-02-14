@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:realm/realm.dart';
 
-import '../../../services/realm/realm_service_client.dart';
+import '../../../core/realm/realm_service_client.dart';
 import '../schema/user_schema.dart';
 
 /// user service file for performing CRUD on user db

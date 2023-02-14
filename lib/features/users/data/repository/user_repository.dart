@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:dio/dio.dart';
 
-import '../../../../services/network/dio_exceptions.dart';
+import '../../../../core/network/dio_exceptions.dart';
 import '../api/user_api.dart';
 import '../models/user_model.dart';
 
