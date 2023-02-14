@@ -10,16 +10,18 @@ class UserSchema extends _UserSchema
     with RealmEntity, RealmObjectBase, RealmObject {
   UserSchema({
     int? id,
-    String? full_name,
+    String? fullName,
     String? username,
     String? password,
     String? email,
+    AddressSchema? address,
   }) {
     RealmObjectBase.set(this, 'id', id);
-    RealmObjectBase.set(this, 'full_name', full_name);
+    RealmObjectBase.set(this, 'fullName', fullName);
     RealmObjectBase.set(this, 'username', username);
     RealmObjectBase.set(this, 'password', password);
     RealmObjectBase.set(this, 'email', email);
+    RealmObjectBase.set(this, 'address', address);
   }
 
   UserSchema._();
@@ -30,10 +32,10 @@ class UserSchema extends _UserSchema
   set id(int? value) => RealmObjectBase.set(this, 'id', value);
 
   @override
-  String? get full_name =>
-      RealmObjectBase.get<String>(this, 'full_name') as String?;
+  String? get fullName =>
+      RealmObjectBase.get<String>(this, 'fullName') as String?;
   @override
-  set full_name(String? value) => RealmObjectBase.set(this, 'full_name', value);
+  set fullName(String? value) => RealmObjectBase.set(this, 'fullName', value);
 
   @override
   String? get username =>
@@ -53,6 +55,13 @@ class UserSchema extends _UserSchema
   set email(String? value) => RealmObjectBase.set(this, 'email', value);
 
   @override
+  AddressSchema? get address =>
+      RealmObjectBase.get<AddressSchema>(this, 'address') as AddressSchema?;
+  @override
+  set address(covariant AddressSchema? value) =>
+      RealmObjectBase.set(this, 'address', value);
+
+  @override
   Stream<RealmObjectChanges<UserSchema>> get changes =>
       RealmObjectBase.getChanges<UserSchema>(this);
 
@@ -66,10 +75,12 @@ class UserSchema extends _UserSchema
     return const SchemaObject(
         ObjectType.realmObject, UserSchema, 'UserSchema', [
       SchemaProperty('id', RealmPropertyType.int, optional: true),
-      SchemaProperty('full_name', RealmPropertyType.string, optional: true),
+      SchemaProperty('fullName', RealmPropertyType.string, optional: true),
       SchemaProperty('username', RealmPropertyType.string, optional: true),
       SchemaProperty('password', RealmPropertyType.string, optional: true),
       SchemaProperty('email', RealmPropertyType.string, optional: true),
+      SchemaProperty('address', RealmPropertyType.object,
+          optional: true, linkTarget: 'AddressSchema'),
     ]);
   }
 }

@@ -1,5 +1,7 @@
 import 'package:realm/realm.dart';
 
+import 'address_schema.dart';
+
 part 'user_schema.g.dart';
 
 /// user schema for realm
@@ -8,8 +10,9 @@ part 'user_schema.g.dart';
 @RealmModel()
 class _UserSchema {
   late int? id;
-  late String? full_name;
+  late String? fullName;
   late String? username;
   late String? password;
   late String? email;
+  late $AddressSchema? address;
 }

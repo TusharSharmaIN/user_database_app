@@ -1,6 +1,6 @@
 import '../features/home/view/home_page.dart';
 import '../features/users_list/view/user_list_page.dart';
-import '../features/users/view/user_page.dart';
+import '../features/get_user/view/user_page.dart';
 import 'routes.dart';
 
 class AppRoutes {

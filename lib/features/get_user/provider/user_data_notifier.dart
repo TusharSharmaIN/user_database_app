@@ -1,8 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../users_list/schema/user_schema.dart';
-import '../../users_list/service/user_service.dart';
-import '../../../services/network/constant/api_response.dart';
+import '../../users_list/data/dao/user_dao.dart';
+import '../../users_list/data/dao/user_dao_impl.dart';
+import '../../users_list/data/schema/address_schema.dart';
+import '../../users_list/data/schema/user_schema.dart';
+import '../../../core/network/constant/api_response.dart';
 import '../data/models/user_state.dart';
 import '../data/repository/user_repository.dart';
 
@@ -15,7 +17,7 @@ class UserDataNotifier extends StateNotifier<UserState> {
   }
 
   UserRepository userRepository;
-  UserService userService = UserService();
+  UserDAO userDAO = UserDAORealmImpl();
 
   Future<void> getUser() async {
     state = state.copyWith(status: RESPONSE_STATUS.loading);
@@ -23,11 +25,19 @@ class UserDataNotifier extends StateNotifier<UserState> {
       /// creating a user to be stored to database
       UserSchema userToAdd = UserSchema(
         id: userData.id,
-        full_name: "${userData.first_name} ${userData.last_name}",
+        fullName: "${userData.firstName} ${userData.lastName}",
         username: userData.username,
         email: userData.email,
+        address: AddressSchema(
+          city: userData.address?.city,
+          streetName: userData.address?.streetName,
+          streetAddress: userData.address?.streetAddress,
+          zipCode: userData.address?.zipCode,
+          state: userData.address?.state,
+          country: userData.address?.country,
+        ),
       );
-      userService.addUser(userToAdd);
+      userDAO.addUser(userToAdd);
 
       /// updating state to loading done
       state = state.copyWith(user: userData, status: RESPONSE_STATUS.completed);

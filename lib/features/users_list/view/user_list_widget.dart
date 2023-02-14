@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../schema/user_schema.dart';
+import '../data/schema/user_schema.dart';
 
 class UserListWidget extends StatelessWidget {
   final List<UserSchema> users;
@@ -30,10 +30,14 @@ class UserListWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              user.full_name.toString(),
+              user.fullName.toString(),
+            ),
+            Text(
+              "${user.address?.city}, ${user.address?.state}, ${user.address?.country}",
             ),
           ],
         ),
@@ -45,7 +49,7 @@ class UserListWidget extends StatelessWidget {
             Icons.delete,
             color: Colors.indigo,
             size: 25,
-            semanticLabel: 'Delete ${user.full_name}',
+            semanticLabel: 'Delete ${user.fullName}',
           ),
         )
       ],

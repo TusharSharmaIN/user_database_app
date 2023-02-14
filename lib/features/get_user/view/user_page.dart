@@ -53,7 +53,7 @@ class UserCardView extends StatelessWidget {
           "Id: ${userData.id.toString()}",
         ),
         Text(
-          "Name: ${userData.first_name} ${userData.last_name}",
+          "Name: ${userData.firstName} ${userData.lastName}",
         ),
         Text(
           "Username: ${userData.username}",

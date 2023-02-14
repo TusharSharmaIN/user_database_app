@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:realm/realm.dart';
 
-import '../schema/user_schema.dart';
-import '../service/user_service.dart';
+import '../data/dao/user_dao.dart';
+import '../data/dao/user_dao_impl.dart';
+import '../data/schema/user_schema.dart';
 import 'add_user_widget.dart';
 import 'user_list_widget.dart';
 
@@ -19,11 +19,11 @@ class UserListPage extends StatefulWidget {
 }
 
 class _UserListPageState extends State<UserListPage> {
-  late RealmResults<UserSchema> users;
-  late final UserService service;
+  late List<UserSchema> users;
+  late final UserDAO userDAO;
 
   _UserListPageState() {
-    service = UserService();
+    userDAO = UserDAORealmImpl();
   }
 
   @override
@@ -33,9 +33,9 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   onAdd(UserSchema user) {
-    String fullName = user.full_name.toString();
+    String fullName = user.fullName.toString();
     debugPrint('Adding $fullName');
-    if (service.addUser(user)) {
+    if (userDAO.addUser(user)) {
       debugPrint('Added $fullName');
       loadUsers();
     } else {
@@ -44,9 +44,9 @@ class _UserListPageState extends State<UserListPage> {
   }
 
   onDelete(UserSchema user) {
-    String fullName = user.full_name.toString();
+    String fullName = user.fullName.toString();
     debugPrint('Deleting $fullName');
-    if (service.deleteUser(user)) {
+    if (userDAO.deleteUser(user)) {
       loadUsers();
     } else {
       debugPrint('Something went wrong while deleting $fullName');
@@ -55,7 +55,7 @@ class _UserListPageState extends State<UserListPage> {
 
   void loadUsers() {
     setState(() {
-      users = service.getUsers();
+      users = userDAO.getAllUsers();
     });
   }
 
@@ -74,7 +74,7 @@ class _UserListPageState extends State<UserListPage> {
           ),
           Expanded(
             child: UserListWidget(
-              users: users.toList(),
+              users: users,
               onDelete: onDelete,
             ),
           )

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../schema/user_schema.dart';
+import '../data/schema/user_schema.dart';
 
 class AddUserWidget extends StatelessWidget {
   final Function(UserSchema) onAdd;
@@ -25,7 +25,7 @@ class AddUserWidget extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               if (textController.text.isNotEmpty) {
-                UserSchema user = UserSchema(full_name: textController.text);
+                UserSchema user = UserSchema(fullName: textController.text);
                 onAdd(user);
               }
             },
