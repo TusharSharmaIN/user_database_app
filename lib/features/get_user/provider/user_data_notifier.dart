@@ -24,7 +24,7 @@ class UserDataNotifier extends StateNotifier<UserState> {
     await userRepository.fetchUser().then((userData) {
       /// creating a user to be stored to database
       UserSchema userToAdd = UserSchema(
-        id: userData.id,
+        userData.id!,
         fullName: "${userData.firstName} ${userData.lastName}",
         username: userData.username,
         email: userData.email,

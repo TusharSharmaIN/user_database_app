@@ -25,9 +25,20 @@ void main() async {
 /// this method defines config for realm
 /// and make a singleton instance accessible throughout the app
 Future<void> initRealm() async {
+  const int currentSchemaVersion = 3;
   final Configuration config = Configuration.local(
     [UserSchema.schema, AddressSchema.schema],
-    schemaVersion: 2,
+    schemaVersion: currentSchemaVersion,
+    migrationCallback: (migration, oldSchemaVersion) {
+      final oldUsers = migration.oldRealm.all('UserSchema');
+      for (final oldUser in oldUsers) {
+        final newUser = migration.findInNewRealm<UserSchema>(oldUser);
+        if (oldUser.dynamic.get<int?>("id") != null) {
+          newUser!.fullName = oldUser.dynamic.get<String?>("full_name");
+          newUser.id = oldUser.dynamic.get<int?>("id")!;
+        }
+      }
+    }
   );
   getIt.registerSingleton<Realm>(Realm(config));
 }

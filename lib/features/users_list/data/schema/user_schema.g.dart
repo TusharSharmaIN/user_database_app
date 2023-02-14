@@ -8,8 +8,8 @@ part of 'user_schema.dart';
 
 class UserSchema extends _UserSchema
     with RealmEntity, RealmObjectBase, RealmObject {
-  UserSchema({
-    int? id,
+  UserSchema(
+    int id, {
     String? fullName,
     String? username,
     String? password,
@@ -27,9 +27,9 @@ class UserSchema extends _UserSchema
   UserSchema._();
 
   @override
-  int? get id => RealmObjectBase.get<int>(this, 'id') as int?;
+  int get id => RealmObjectBase.get<int>(this, 'id') as int;
   @override
-  set id(int? value) => RealmObjectBase.set(this, 'id', value);
+  set id(int value) => RealmObjectBase.set(this, 'id', value);
 
   @override
   String? get fullName =>
@@ -74,7 +74,7 @@ class UserSchema extends _UserSchema
     RealmObjectBase.registerFactory(UserSchema._);
     return const SchemaObject(
         ObjectType.realmObject, UserSchema, 'UserSchema', [
-      SchemaProperty('id', RealmPropertyType.int, optional: true),
+      SchemaProperty('id', RealmPropertyType.int, primaryKey: true),
       SchemaProperty('fullName', RealmPropertyType.string, optional: true),
       SchemaProperty('username', RealmPropertyType.string, optional: true),
       SchemaProperty('password', RealmPropertyType.string, optional: true),
