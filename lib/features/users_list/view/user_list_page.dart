@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../data/dao/user_dao.dart';
-import '../data/dao/user_dao_impl.dart';
 import '../data/schema/user_schema.dart';
 import 'add_user_widget.dart';
 import 'user_list_widget.dart';
@@ -23,7 +22,7 @@ class _UserListPageState extends State<UserListPage> {
   late final UserDAO userDAO;
 
   _UserListPageState() {
-    userDAO = UserDAORealmImpl();
+    userDAO = UserDAO();
   }
 
   @override

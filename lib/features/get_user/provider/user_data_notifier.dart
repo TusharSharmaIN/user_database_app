@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../users_list/data/dao/user_dao.dart';
-import '../../users_list/data/dao/user_dao_impl.dart';
 import '../../users_list/data/schema/address_schema.dart';
 import '../../users_list/data/schema/user_schema.dart';
 import '../../../core/network/constant/api_response.dart';
@@ -17,7 +16,7 @@ class UserDataNotifier extends StateNotifier<UserState> {
   }
 
   UserRepository userRepository;
-  UserDAO userDAO = UserDAORealmImpl();
+  UserDAO userDAO = UserDAO();
 
   Future<void> getUser() async {
     state = state.copyWith(status: RESPONSE_STATUS.loading);
