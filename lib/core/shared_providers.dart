@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'network/dio_client.dart';
+import 'api/api_client.dart';
 import 'shared_preferences/preference.dart';
 import 'shared_preferences/preference_client.dart';
 
@@ -11,9 +11,9 @@ final dioInstanceProvider = Provider<Dio>((ref) {
   return Dio();
 });
 
-final dioClientProvider = Provider<DioClient>((ref) {
+final apiClientProvider = Provider<ApiClient>((ref) {
   final dio = ref.watch(dioInstanceProvider);
-  return DioClient(dio);
+  return ApiClient(dio);
 });
 
 final preferenceProvider = Provider<Preference>((ref) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../data/dao/user_dao.dart';
-import '../data/schema/user_schema.dart';
+import '../../../core/db/user_dao/schema/user_schema.dart';
+import '../../../core/db/user_dao/user_dao.dart';
 import 'add_user_widget.dart';
 import 'user_list_widget.dart';
 
@@ -52,6 +52,15 @@ class _UserListPageState extends State<UserListPage> {
     }
   }
 
+  onClear() {
+    if (userDAO.clear()) {
+      loadUsers();
+      debugPrint('Successfully Cleared');
+    } else {
+      debugPrint('Not able to clear list');
+    }
+  }
+
   void loadUsers() {
     setState(() {
       users = userDAO.getAllUsers();
@@ -71,6 +80,16 @@ class _UserListPageState extends State<UserListPage> {
           // AddUserWidget(
           //   onAdd: onAdd,
           // ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ElevatedButton(
+                onPressed: onClear,
+                child: const Text("Clear"),
+              ),
+            ),
+          ),
           Expanded(
             child: UserListWidget(
               users: users,

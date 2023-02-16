@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../core/network/constant/api_response.dart';
-import 'user_model.dart';
+import '../../../../core/api/api_constants/response_status.dart';
+import '../../../../core/api/api_services/user_api/api_models/user_model.dart';
 
 part 'user_state.freezed.dart';
 

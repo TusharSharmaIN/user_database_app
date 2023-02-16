@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../users_list/data/dao/user_dao.dart';
-import '../../users_list/data/schema/address_schema.dart';
-import '../../users_list/data/schema/user_schema.dart';
-import '../../../core/network/constant/api_response.dart';
+import '../../../core/api/api_constants/response_status.dart';
+import '../../../core/db/user_dao/schema/address_schema.dart';
+import '../../../core/db/user_dao/schema/user_schema.dart';
+import '../../../core/db/user_dao/user_dao.dart';
 import '../data/models/user_state.dart';
 import '../data/repository/user_repository.dart';
 

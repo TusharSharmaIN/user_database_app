@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:realm/realm.dart';
 
+import 'core/db/user_dao/schema/address_schema.dart';
+import 'core/db/user_dao/schema/user_schema.dart';
 import 'routes/app_routes.dart';
 import 'routes/routes.dart';
-import 'features/users_list/data/schema/address_schema.dart';
-import 'features/users_list/data/schema/user_schema.dart';
 import 'utils/styles/app_theme.dart';
 
 GetIt getIt = GetIt.instance;

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/api/api_services/user_api/user_api_service.dart';
 import '../../../core/shared_providers.dart';
-import '../data/api/user_api.dart';
 import '../data/models/user_state.dart';
 import '../data/repository/user_repository.dart';
 import 'user_data_notifier.dart';
@@ -9,7 +9,7 @@ import 'user_data_notifier.dart';
 /// list of providers
 
 final userApiProvider = Provider<UserApi>((ref) {
-  return UserApi(ref.read(dioClientProvider));
+  return UserApi(ref.read(apiClientProvider));
 });
 
 final userRepositoryProvider = Provider<UserRepository>((ref) {

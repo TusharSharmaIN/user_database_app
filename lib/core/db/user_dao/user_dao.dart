@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:realm/realm.dart';
 
 import '../../../../main.dart';
-import '../schema/user_schema.dart';
+import 'schema/user_schema.dart';
 
 class UserDAO {
   late final Realm userRealm;
@@ -49,7 +49,7 @@ class UserDAO {
   bool clear() {
     try {
       userRealm.write((){
-        userRealm.deleteAll();
+        userRealm.deleteAll<UserSchema>();
       });
       return true;
     } on RealmException catch (e) {

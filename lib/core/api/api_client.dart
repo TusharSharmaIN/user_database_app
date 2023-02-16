@@ -1,22 +1,22 @@
 import 'package:dio/dio.dart';
 
-import 'constant/endpoints.dart';
-import 'interceptor/dio_interceptor.dart';
+import 'api_constants/api_endpoints.dart';
+import 'api_interceptor.dart';
 
-class DioClient {
+class ApiClient {
   /// dio instance
   final Dio _dio;
 
   Dio get dio => _dio;
 
   /// injecting dio instance
-  DioClient(this._dio) {
+  ApiClient(this._dio) {
     _dio
-      // ..options.baseUrl = Endpoints.baseUrl
-      ..options.connectTimeout = Endpoints.connectionTimeout
-      ..options.receiveTimeout = Endpoints.receiveTimeout
+    // ..options.baseUrl = Endpoints.baseUrl
+      ..options.connectTimeout = ApiEndpoints.connectionTimeout
+      ..options.receiveTimeout = ApiEndpoints.receiveTimeout
       ..options.responseType = ResponseType.json
-      ..interceptors.add(DioInterceptor())
+      ..interceptors.add(ApiInterceptor())
       ..interceptors.add(LogInterceptor(
         request: true,
         requestHeader: true,

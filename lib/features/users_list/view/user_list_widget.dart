@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../data/schema/user_schema.dart';
+
+import '../../../core/db/user_dao/schema/user_schema.dart';
 
 class UserListWidget extends StatelessWidget {
   final List<UserSchema> users;

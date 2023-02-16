@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/api/api_services/user_api/api_models/user_model.dart';
 import '../../../utils/extensions/response_status.dart';
-import '../data/models/user_model.dart';
 import '../provider/user_provider.dart';
 
 class UserPage extends ConsumerWidget {

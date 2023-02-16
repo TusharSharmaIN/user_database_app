@@ -1,4 +1,6 @@
-import '../../core/network/constant/api_response.dart';
+
+
+import '../../core/api/api_constants/response_status.dart';
 
 extension ResponseStatus on RESPONSE_STATUS {
   bool isIdle() {

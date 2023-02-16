@@ -1,4 +1,4 @@
-class Endpoints {
+class ApiEndpoints {
   /// base url
   static const String users = "https://random-data-api.com/api/v2/users";
 

@@ -1,16 +1,16 @@
-import '../../../../core/network/constant/endpoints.dart';
-import '../../../../core/network/dio_client.dart';
+import '../../api_client.dart';
+import '../../api_constants/api_endpoints.dart';
 
 /// api class to communicate with users api using dio
 /// must be called from a repository
 class UserApi {
-  final DioClient _dioClient;
+  final ApiClient _apiClient;
 
-  UserApi(this._dioClient);
+  UserApi(this._apiClient);
 
   Future<Map<String, dynamic>> fetchUserFromAPI() async {
     try {
-      final res = await _dioClient.dio.get(Endpoints.users);
+      final res = await _apiClient.dio.get(ApiEndpoints.users);
       return res.data;
     } catch (e) {
       rethrow;
